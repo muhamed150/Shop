@@ -67,17 +67,389 @@ namespace Shop.View
 
         private void PastriesInput()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            var operation = -1;
+            do
+            {
+                ShowPastriesMenu();
+                Console.Write("Enter number: ");
+                operation = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (operation)
+                {
+                    case 1:
+                        ListAllPastries();
+                        Close();
+                        break;
+                    case 2:
+                        FindPastryById();
+                        Close();
+                        break;
+                    case 3:
+                        AddPastry();
+                        Close();
+                        break;
+                    case 4:
+                        RemovePastry();
+                        Close();
+                        break;
+                    case 5:
+                        UpdatePastry();
+                        Close();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (operation != RETURN_OPERATION_ID);
+
+        }
+
+        private void ListAllPastries()
+        {
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "PASTRIES");
+            Console.WriteLine(new string('*', 40));
+            var pastries = pastryController.GetAllPastries();
+            foreach (var item in pastries)
+            {
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+            }
+            Console.WriteLine(new string('*', 40));
+        }
+
+        private void FindPastryById()
+        {
+            Console.Write("Enter ID: ");
+            var id = int.Parse(Console.ReadLine());
+            var pastry = pastryController.GetPastryById(id);
+            if (pastry != null)
+            {
+                Console.WriteLine(new string('*', 40));
+                Console.WriteLine("ID: " + pastry.Id);
+                Console.WriteLine("Category: " + pastry.Category);
+                Console.WriteLine("Name: " + pastry.Name);
+                Console.WriteLine("Price: " + pastry.Price + "lv.");
+                Console.WriteLine("Quantity: " + pastry.Quantity + "pcs.");
+                Console.WriteLine(new string('*', 40));
+            }
+            else
+            {
+                Console.WriteLine("The pastry was not found!");
+            }
+        }
+
+        private void AddPastry()
+        {
+            Pastry pastry = new Pastry();
+            Console.Write("Enter category: ");
+            var category = Console.ReadLine();
+            Console.Write("Enter name: ");
+            var name = Console.ReadLine();
+            Console.Write("Enter price: ");
+            var price = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter quantity: ");
+            var quantity = int.Parse(Console.ReadLine());
+            pastry.Category = category;
+            pastry.Name = name;
+            pastry.Price = price;
+            pastry.Quantity = quantity;
+            pastryController.Add(pastry);
+            Console.WriteLine("The pastry was successfully added!");
+        }
+
+        private void RemovePastry()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var pastry = pastryController.GetPastryById(id);
+            pastryController.Delete(pastry.Id); 
+            Console.WriteLine("Тhe pastry was deleted successfully!");
+        }
+
+        private void UpdatePastry()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var pastry = pastryController.GetPastryById(id);
+            if (pastry != null)
+            {
+                Console.WriteLine($"{pastry.Id} {pastry.Category} {pastry.Name} {pastry.Price}lv. {pastry.Quantity}pcs.");
+                Console.Write("Enter category: ");
+                var category = Console.ReadLine();
+                Console.Write("Enter name: ");
+                var name = Console.ReadLine();
+                Console.Write("Enter price: ");
+                var price = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Enter quantity: ");
+                var quantity = int.Parse(Console.ReadLine());
+                pastry.Category = category;
+                pastry.Name = name;
+                pastry.Price = price;
+                pastry.Quantity = quantity;
+                pastryController.Update(pastry);
+                Console.WriteLine("The pastry was updated successfully!");
+            }
         }
 
         private void FruitsAndVegetablesInput()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            var operation = -1;
+            do
+            {
+                ShowPastriesMenu();
+                Console.Write("Enter number: ");
+                operation = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (operation)
+                {
+                    case 1:
+                        ListAllFruitsAndVegetables();
+                        Close();
+                        break;
+                    case 2:
+                        FindFruitOrVegetableById();
+                        Close();
+                        break;
+                    case 3:
+                        AddFruitOrVegetable();
+                        Close();
+                        break;
+                    case 4:
+                        RemoveFruitOrVegetable();
+                        Close();
+                        break;
+                    case 5:
+                        UpdateFruitOrVegetable();
+                        Close();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (operation != RETURN_OPERATION_ID);
+
+        }
+
+        private void ListAllFruitsAndVegetables()
+        {
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "FRUITS AND VEGETABLES");
+            Console.WriteLine(new string('*', 40));
+            var fruitsAndVegetables = fruitAndVegetableController.GetAllFruitsAndVegetables();
+            foreach (var item in fruitsAndVegetables)
+            {
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+            }
+            Console.WriteLine(new string('*', 40));
+        }
+
+        private void FindFruitOrVegetableById()
+        {
+            Console.Write("Enter ID: ");
+            var id = int.Parse(Console.ReadLine());
+            var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
+            if (fruitOrVegetable != null)
+            {
+                Console.WriteLine(new string('*', 40));
+                Console.WriteLine("ID: " + fruitOrVegetable.Id);
+                Console.WriteLine("Category: " + fruitOrVegetable.Category);
+                Console.WriteLine("Name: " + fruitOrVegetable.Name);
+                Console.WriteLine("Price: " + fruitOrVegetable.Price + "lv.");
+                Console.WriteLine("Quantity: " + fruitOrVegetable.Quantity + "pcs.");
+                Console.WriteLine(new string('*', 40));
+            }
+            else
+            {
+                Console.WriteLine("The fruit or vegetable was not found!");
+            }
+        }
+
+        private void AddFruitOrVegetable()
+        {
+            FruitAndVegetable fruitOrVegetable = new FruitAndVegetable();
+            Console.Write("Enter category: ");
+            var category = Console.ReadLine();
+            Console.Write("Enter name: ");
+            var name = Console.ReadLine();
+            Console.Write("Enter price: ");
+            var price = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter quantity: ");
+            var quantity = int.Parse(Console.ReadLine());
+            fruitOrVegetable.Category = category;
+            fruitOrVegetable.Name = name;
+            fruitOrVegetable.Price = price;
+            fruitOrVegetable.Quantity = quantity;
+            fruitAndVegetableController.Add(fruitOrVegetable);
+            Console.WriteLine("The fruit or vegetable was successfully added!");
+        }
+
+        private void RemoveFruitOrVegetable()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
+            fruitAndVegetableController.Delete(fruitOrVegetable.Id);
+            Console.WriteLine("Тhe fruit or vegetable was deleted successfully!");
+        }
+
+        private void UpdateFruitOrVegetable()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
+            if (fruitOrVegetable != null)
+            {
+                Console.WriteLine($"{fruitOrVegetable.Id} {fruitOrVegetable.Category} {fruitOrVegetable.Name} {fruitOrVegetable.Price}lv. {fruitOrVegetable.Quantity}pcs.");
+                Console.Write("Enter category: ");
+                var category = Console.ReadLine();
+                Console.Write("Enter name: ");
+                var name = Console.ReadLine();
+                Console.Write("Enter price: ");
+                var price = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Enter quantity: ");
+                var quantity = int.Parse(Console.ReadLine());
+                fruitOrVegetable.Category = category;
+                fruitOrVegetable.Name = name;
+                fruitOrVegetable.Price = price;
+                fruitOrVegetable.Quantity = quantity;
+                fruitAndVegetableController.Update(fruitOrVegetable);
+                Console.WriteLine("The fruit or vegetable was updated successfully!");
+            }
         }
 
         private void NutsInput()
         {
-            throw new NotImplementedException();
+            Console.Clear();
+            var operation = -1;
+            do
+            {
+                ShowNutsMenu();
+                Console.Write("Enter number: ");
+                operation = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (operation)
+                {
+                    case 1:
+                        ListAllNuts();
+                        Close();
+                        break;
+                    case 2:
+                        FindNutById();
+                        Close();
+                        break;
+                    case 3:
+                        AddNut();
+                        Close();
+                        break;
+                    case 4:
+                        RemoveNut();
+                        Close();
+                        break;
+                    case 5:
+                        UpdateNut();
+                        Close();
+                        break;
+                    case 6:
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (operation != RETURN_OPERATION_ID);
+
+        }
+
+        private void ListAllNuts()
+        {
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "NUTS");
+            Console.WriteLine(new string('*', 40));
+            var nuts = nutController.GetAllNuts();
+            foreach (var item in nuts)
+            {
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+            }
+            Console.WriteLine(new string('*', 40));
+        }
+
+        private void FindNutById()
+        {
+            Console.Write("Enter ID: ");
+            var id = int.Parse(Console.ReadLine());
+            var nut = nutController.GetNutById(id);
+            if (nut != null)
+            {
+                Console.WriteLine(new string('*', 40));
+                Console.WriteLine("ID: " + nut.Id);
+                Console.WriteLine("Category: " + nut.Category);
+                Console.WriteLine("Name: " + nut.Name);
+                Console.WriteLine("Price: " + nut.Price + "lv.");
+                Console.WriteLine("Quantity: " + nut.Quantity + "pcs.");
+                Console.WriteLine(new string('*', 40));
+            }
+            else
+            {
+                Console.WriteLine("The nut was not found!");
+            }
+        }
+
+        private void AddNut()
+        {
+            Nut nut = new Nut();
+            Console.Write("Enter category: ");
+            var category = Console.ReadLine();
+            Console.Write("Enter name: ");
+            var name = Console.ReadLine();
+            Console.Write("Enter price: ");
+            var price = decimal.Parse(Console.ReadLine());
+            Console.WriteLine("Enter quantity: ");
+            var quantity = int.Parse(Console.ReadLine());
+            nut.Category = category;
+            nut.Name = name;
+            nut.Price = price;
+            nut.Quantity = quantity;
+            nutController.Add(nut);
+            Console.WriteLine("The nut was successfully added!");
+        }
+
+        private void RemoveNut()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var nut = nutController.GetNutById(id);
+            nutController.Delete(nut.Id);
+            Console.WriteLine("Тhe nut was deleted successfully!");
+        }
+
+        private void UpdateNut()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var nut = nutController.GetNutById(id);
+            if (nut != null)
+            {
+                Console.WriteLine($"{nut.Id} {nut.Category} {nut.Name} {nut.Price}lv. {nut.Quantity}pcs.");
+                Console.Write("Enter category: ");
+                var category = Console.ReadLine();
+                Console.Write("Enter name: ");
+                var name = Console.ReadLine();
+                Console.Write("Enter price: ");
+                var price = decimal.Parse(Console.ReadLine());
+                Console.WriteLine("Enter quantity: ");
+                var quantity = int.Parse(Console.ReadLine());
+                nut.Category = category;
+                nut.Name = name;
+                nut.Price = price;
+                nut.Quantity = quantity;
+                nutController.Update(nut);
+                Console.WriteLine("The nut was updated successfully!");
+            }
         }
 
         private void DrinksInput()
@@ -97,7 +469,7 @@ namespace Shop.View
                         Close();
                         break;
                     case 2:
-                        GetDrinkById(); 
+                        FindDrinkById(); 
                         Close();
                         break;
                     case 3:
@@ -122,12 +494,6 @@ namespace Shop.View
 
         }
 
-        private void Close()
-        {
-            Console.Write("Press any key to continue... ");
-            Console.ReadKey();
-            Console.Clear();
-        }
 
         private void ListAllDrinks()
         {
@@ -142,7 +508,7 @@ namespace Shop.View
             Console.WriteLine(new string('*', 40));
         }
 
-        private void GetDrinkById()
+        private void FindDrinkById()
         {
             Console.Write("Enter ID: ");
             var id = int.Parse(Console.ReadLine());
@@ -166,13 +532,13 @@ namespace Shop.View
         private void AddDrink()
         {
             Drink drink = new Drink();
-            Console.Write("Enter drink's category: ");
+            Console.Write("Enter category: ");
             var category = Console.ReadLine();
-            Console.Write("Enter drink's name: ");
+            Console.Write("Enter name: ");
             var name = Console.ReadLine();
-            Console.Write("Enter drink's price: ");
+            Console.Write("Enter price: ");
             var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter drink's quantity: ");
+            Console.WriteLine("Enter quantity: ");
             var quantity = int.Parse(Console.ReadLine());
             drink.Category = category;
             drink.Name = name;
@@ -216,19 +582,46 @@ namespace Shop.View
             }
         }
 
-        private void ShowPaistriesMenu()
+        private void ShowPastriesMenu()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "PASTRIES MENU");
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine("1. List all pastries.");
+            Console.WriteLine("2. Found pastry by ID.");
+            Console.WriteLine("3. Add pastry.");
+            Console.WriteLine("4. Remove pastry.");
+            Console.WriteLine("5. Update pastry.");
+            Console.WriteLine("6. Return to main menu");
+            Console.WriteLine(new string('*', 40));
         }
 
         private void ShowFruitsAndVegetablesMenu()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "FRUITS AND VEGETABLES MENU");
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine("1. List all fruts and vegetables.");
+            Console.WriteLine("2. Found fruit or vegetable by ID.");
+            Console.WriteLine("3. Add fruit or vegetable.");
+            Console.WriteLine("4. Remove fruit or vegetable.");
+            Console.WriteLine("5. Update fruit or vegetable.");
+            Console.WriteLine("6. Return to main menu");
+            Console.WriteLine(new string('*', 40));
         }
 
         private void ShowNutsMenu()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine(new string(' ', 18) + "NUTS MENU");
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine("1. List all nuts.");
+            Console.WriteLine("2. Found nut by ID.");
+            Console.WriteLine("3. Add nut.");
+            Console.WriteLine("4. Remove nut.");
+            Console.WriteLine("5. Update nut.");
+            Console.WriteLine("6. Return to main menu");
+            Console.WriteLine(new string('*', 40));
         }
 
         private void ShowDrinksMenu()
@@ -245,5 +638,11 @@ namespace Shop.View
                 Console.WriteLine(new string('*', 40));
         }
 
+        private void Close()
+        {
+            Console.Write("Press any key to continue... ");
+            Console.ReadKey();
+            Console.Clear();
+        }
     }
 }
