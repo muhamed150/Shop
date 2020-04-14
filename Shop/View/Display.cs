@@ -7,7 +7,7 @@ namespace Shop.View
 {
     public class Display
     {
-
+        private const string close = "close";
         private const int CLOSE_OPERATION_ID = 5;
         private const int RETURN_OPERATION_ID = 6;
         private DrinkController drinkController;
@@ -33,7 +33,7 @@ namespace Shop.View
             Console.WriteLine("3. Go to nuts");
             Console.WriteLine("4. Go to drinks");   
             Console.WriteLine("5. Exit");   
-            Console.WriteLine(new string('*', 40)); //Ако е грозно махаме
+            Console.WriteLine(new string('*', 40));
         }
 
         private void HandleInput()
@@ -62,7 +62,7 @@ namespace Shop.View
                         break;
                 }
                 
-            } while (operation!=CLOSE_OPERATION_ID);  
+            } while (operation != CLOSE_OPERATION_ID);
         }
 
         private void PastriesInput()
@@ -93,34 +93,41 @@ namespace Shop.View
                 switch (operation)
                 {
                     case 1:
-                        ListAllDrinks();
+                        ListAllDrinks(); 
+                        Close();
                         break;
                     case 2:
-                        GetDrinkById();
+                        GetDrinkById(); 
+                        Close();
                         break;
                     case 3:
-                        AddDrink();
+                        AddDrink(); 
+                        Close();
                         break;
                     case 4:
                         RemoveDrink();
+                        Close();
                         break;
                     case 5:
-                        UpdateDrink();
+                        UpdateDrink(); 
+                        Close();
                         break;
-                    case 6:
-                        HandleInput();
+                    case 6: 
                         break;
                     default:
                         break;
                 }
 
-                Console.Write("Press any key to continue... ");
-                Console.ReadKey();
-                Console.Clear();
-            } while (true);
+            } while (operation != RETURN_OPERATION_ID); 
 
         }
 
+        private void Close()
+        {
+            Console.Write("Press any key to continue... ");
+            Console.ReadKey();
+            Console.Clear();
+        }
 
         private void ListAllDrinks()
         {
