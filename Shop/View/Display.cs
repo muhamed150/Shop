@@ -1,110 +1,73 @@
-﻿using Shop.Controllers;
-using Shop.Data.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using Shop.Controllers;
 using System.Text;
 
 namespace Shop.View
 {
-   public class Display
+    public class Display
     {
-        private int closeOperationId = 6;
-        DrinkController drinkController = new DrinkController();
 
-        public Display()
-        {
-            input();
-        }
-        private void ShowMenu()
-        {
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine(new string(' ', 18) + "MENU");
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine("1. List all drinks");
-            Console.WriteLine("2. Add new drink");
-            Console.WriteLine("3. Update drink");//направи sell метод
-            Console.WriteLine("4. Fetch entry by name");// ако се счупи трябва да се помисли за id
-            Console.WriteLine("5. Delete entry by ID");
-            Console.WriteLine("6. Exit entry");
+        private DrinkController drinkController;
+        private NutController nutController;
+        private FruitAndVegetableController fruitAndVegetableController;
+        private PastryController pastryController;
 
-        }
-        private void input()
+        public Display(ShopContext context)
         {
-            var operation = -1;
+            drinkController = new DrinkController();
+            nutController = new NutController();
+            fruitAndVegetableController = new FruitAndVegetableController();
+            pastryController = new PastryController();
+            HandleInput();
+        }
+
+        private void ShowCommands()
+        {
+            Console.WriteLine(new string('_',40));
+            Console.WriteLine("List of the general commands:");
+            Console.WriteLine("1.List all products.");
+            Console.WriteLine("2.Get product by name.");
+            Console.WriteLine("3.Add product.");
+            Console.WriteLine("4.Remove product.");
+            Console.WriteLine("5.Update product.");
+            Console.WriteLine("6.Buy product.");
+            Console.WriteLine("7.Exit.");
+            Console.WriteLine(new string('_', 40));
+        }
+
+        private void HandleInput()
+        {
+            string input;
             do
             {
-                ShowMenu();
-                operation = int.Parse(Console.ReadLine());
-                switch (operation)
+                ShowCommands();
+                input = Console.ReadLine();
+                switch (input)
                 {
-                    case 1:
-                        ListAllDrinks();
+                    case "1":
+                        ListAllProducts();
                         break;
-                    case 2:
-                        AddDrink();
+                    case "2":
+                        GetProductByName();
                         break;
-                    case 3:
-                        SellDrink();
+                    case "3":
+                        AddProduct();
                         break;
-                    case 4:
-                        GetInformationAboutDrink();
+                    case "4":
+                        RemoveProduct();
                         break;
-                    case 5:
-                        DeleteDrink();
+                    case "5":
+                        UpdateProduct();
                         break;
+                    case "6":
+                        BuyProduct();
                     default:
                         break;
                 }
-                Console.WriteLine("Press any key to continue...");
-                Console.ReadKey();
-                Console.Clear();
-            } while (operation!=closeOperationId);
-        }
+            } while (input!=7);
 
-        private void DeleteDrink()
-        {
-            throw new NotImplementedException();
-        }
 
-        private void GetInformationAboutDrink()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void SellDrink()
-        {
-            throw new NotImplementedException();
-        }
-
-        private void AddDrink()
-        {
-            Drink drink = new Drink();
-            Console.Write("Insert drink's category: ");
-            var category = Console.ReadLine();
-            Console.Write("Insert drink's name: ");
-            var name = Console.ReadLine();
-            Console.Write("Insert drink's price: ");
-            var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Insert drink's quantity: ");
-            var quantity = int.Parse(Console.ReadLine());
-            drink.Category = category;
-            drink.Name = name;
-            drink.Price = price;
-            drink.Quantity = quantity;
-            drinkController.Add(drink);
-            Console.WriteLine("Sucesfully added!");
-        }
-
-        private void ListAllDrinks()
-        {
-            Console.WriteLine(new string('-', 40));
-            Console.WriteLine(new string(' ', 18) + "DRINKS");
-            Console.WriteLine(new string('-', 40));
-            var drinks = drinkController.GetAllDrinks();
-            foreach (var item in drinks)
-            {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price} {item.Quantity}");
-            }
         }
     }
 }
