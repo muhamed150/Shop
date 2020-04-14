@@ -17,11 +17,11 @@ namespace Shop.Controllers
             }
         }
 
-        public Nut GetNutByName(string name) //ако се счупи промени на id
+        public Nut GetNutById(int id) 
         {
             using (context = new ShopContext())
             {
-                return context.Nuts.Find(name);
+                return context.Nuts.Find(id);
             }
         }
 
@@ -47,11 +47,11 @@ namespace Shop.Controllers
             }
         }
 
-        public void Delete(Nut nut)
+        public void Delete(int id)
         {
             using (context = new ShopContext())
             {
-                var item = context.Drinks.Find(nut.Id);
+                var item = context.Drinks.Find(id);
                 if (item != null)
                 {
                     context.Drinks.Remove(item);

@@ -16,11 +16,11 @@ namespace Shop.Controllers
             }
         }
 
-        public Pastry GetPastryByName(string name)
+        public Pastry GetPastryById(int id)
         {
             using (context = new ShopContext())
             {
-                return context.Pastries.Find(name);
+                return context.Pastries.Find(id);
             }
         }
 
@@ -46,11 +46,11 @@ namespace Shop.Controllers
             }
         }
 
-        public void Delete(Pastry pastry)
+        public void Delete(int id)
         {
             using (context = new ShopContext())
             {
-                var item = context.Pastries.Find(pastry.Id);
+                var item = context.Pastries.Find(id);
                 if (item != null)
                 {
                     context.Pastries.Remove(item);

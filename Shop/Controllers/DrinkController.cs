@@ -17,11 +17,11 @@ namespace Shop.Controllers
             }
         }
 
-        public Drink GetDrinkByName(string name) //ако се счупи промени на id
+        public Drink GetDrinkById(int id)
         {
             using (context = new ShopContext())
             {
-                return context.Drinks.Find(name);
+                return context.Drinks.Find(id);
             }
         }
 
@@ -47,11 +47,11 @@ namespace Shop.Controllers
             }
         }
 
-        public void Delete(Drink drink)
+        public void Delete(int id)
         {
             using (context = new ShopContext())
             {
-                var item = context.Drinks.Find(drink.Id);
+                var item = context.Drinks.Find(id);
                 if (item != null)
                 {
                     context.Drinks.Remove(item);

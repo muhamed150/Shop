@@ -16,11 +16,11 @@ namespace Shop.Controllers
             }
         }
 
-        public FruitAndVegetable GetFruitOrVegetableByName(string name)
+        public FruitAndVegetable GetFruitOrVegetableById(int id)
         {
             using (context = new ShopContext())
             {
-                return context.FruitsAndVegetables.Find(name);
+                return context.FruitsAndVegetables.Find(id);
             }
         }
 
@@ -46,11 +46,11 @@ namespace Shop.Controllers
             }
         }
 
-        public void Delete(FruitAndVegetable fruitORvegetable)
+        public void Delete(int id)
         {
             using (context = new ShopContext())
             {
-                var item = context.FruitsAndVegetables.Find(fruitORvegetable.Id);
+                var item = context.FruitsAndVegetables.Find(id);
                 if (item != null)
                 {
                     context.FruitsAndVegetables.Remove(item);
