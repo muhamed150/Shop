@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Shop.View;
+using System;
 
 namespace Shop
 {
@@ -6,7 +7,7 @@ namespace Shop
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            
         }
     }
 }
