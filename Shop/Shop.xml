@@ -1,0 +1,110 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Shop</name>
+    </assembly>
+    <members>
+        <member name="T:Shop.Controllers.NutController">
+            <summary>
+            Provides the link between the database and the UI. 
+            </summary>
+        </member>
+        <member name="F:Shop.Controllers.NutController.context">
+            <summary>
+            Database link.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.NutController.GetAllNuts">
+            <summary>
+            Gives all Nuts in the database.
+            </summary>
+            <returns>all nuts from the database</returns>
+        </member>
+        <member name="M:Shop.Controllers.NutController.GetNutById(System.Int32)">
+            <summary>
+            Gives a Nut with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted nut</param>
+            <returns>a nut with that id</returns>
+        </member>
+        <member name="M:Shop.Controllers.NutController.Add(Shop.Data.Models.Nut)">
+            <summary>
+            Adds a Nut.
+            </summary>
+            <param name="nut">the nut that will be added</param>
+        </member>
+        <member name="M:Shop.Controllers.NutController.Update(Shop.Data.Models.Nut)">
+            <summary>
+            Updates a Nut.
+            </summary>
+            <param name="nut">the nut that will be updated</param>
+        </member>
+        <member name="M:Shop.Controllers.NutController.Delete(System.Int32)">
+            <summary>
+            Deletes a Nut with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted nut</param>
+        </member>
+        <member name="T:Shop.Controllers.PastryController">
+            <summary>
+            Provides the link between the database and the UI. 
+            </summary>
+        </member>
+        <member name="F:Shop.Controllers.PastryController.context">
+            <summary>
+            Database link.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.GetAllPastries">
+            <summary>
+            Gives all Pastries in the database.
+            </summary>
+            <returns>all pastries from the database</returns>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.GetPastryById(System.Int32)">
+            <summary>
+            Gives a Pastry with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted pastry</param>
+            <returns>a pastry with that id</returns>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.Add(Shop.Data.Models.Pastry)">
+            <summary>
+            Adds a Pastry.
+            </summary>
+            <param name="pastry">the pastry that will be added</param>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.Update(Shop.Data.Models.Pastry)">
+            <summary>
+            Updates a Pastry.
+            </summary>
+            <param name="pastry">the pastry that will be updated</param>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.Delete(System.Int32)">
+            <summary>
+            Deletes a Pastry with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted pastry</param>
+        </member>
+        <member name="T:Shop.Data.Models.Nut">
+            <summary>
+            The struckture of the Nut table in the database. 
+            </summary>
+        </member>
+        <member name="T:Shop.Data.Models.Pastry">
+            <summary>
+            The struckture of the Pastry table in the database. 
+            </summary>
+        </member>
+        <member name="T:Shop.Data.ShopContext">
+            <summary>
+            Context to connect to the database.
+            </summary>
+        </member>
+        <member name="T:Shop.View.Display">
+            <summary>
+            User interface.
+            </summary>
+        </member>
+    </members>
+</doc>
