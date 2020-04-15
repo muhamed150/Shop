@@ -150,7 +150,7 @@ namespace Shop.View
             var name = Console.ReadLine();
             Console.Write("Enter price: ");
             var price = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Enter quantity: ");
+            Console.Write("Enter quantity: ");
             var quantity = int.Parse(Console.ReadLine());
             pastry.Category = category;
             pastry.Name = name;
@@ -183,7 +183,7 @@ namespace Shop.View
                 var name = Console.ReadLine();
                 Console.Write("Enter price: ");
                 var price = decimal.Parse(Console.ReadLine());
-                Console.WriteLine("Enter quantity: ");
+                Console.Write("Enter quantity: ");
                 var quantity = int.Parse(Console.ReadLine());
                 pastry.Category = category;
                 pastry.Name = name;
@@ -279,7 +279,7 @@ namespace Shop.View
             var name = Console.ReadLine();
             Console.Write("Enter price: ");
             var price = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Enter quantity: ");
+            Console.Write("Enter quantity: ");
             var quantity = int.Parse(Console.ReadLine());
             fruitOrVegetable.Category = category;
             fruitOrVegetable.Name = name;
@@ -312,7 +312,7 @@ namespace Shop.View
                 var name = Console.ReadLine();
                 Console.Write("Enter price: ");
                 var price = decimal.Parse(Console.ReadLine());
-                Console.WriteLine("Enter quantity: ");
+                Console.Write("Enter quantity: ");
                 var quantity = int.Parse(Console.ReadLine());
                 fruitOrVegetable.Category = category;
                 fruitOrVegetable.Name = name;
@@ -408,7 +408,7 @@ namespace Shop.View
             var name = Console.ReadLine();
             Console.Write("Enter price: ");
             var price = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Enter quantity: ");
+            Console.Write("Enter quantity: ");
             var quantity = int.Parse(Console.ReadLine());
             nut.Category = category;
             nut.Name = name;
@@ -441,7 +441,7 @@ namespace Shop.View
                 var name = Console.ReadLine();
                 Console.Write("Enter price: ");
                 var price = decimal.Parse(Console.ReadLine());
-                Console.WriteLine("Enter quantity: ");
+                Console.Write("Enter quantity: ");
                 var quantity = int.Parse(Console.ReadLine());
                 nut.Category = category;
                 nut.Name = name;
@@ -538,7 +538,7 @@ namespace Shop.View
             var name = Console.ReadLine();
             Console.Write("Enter price: ");
             var price = decimal.Parse(Console.ReadLine());
-            Console.WriteLine("Enter quantity: ");
+            Console.Write("Enter quantity: ");
             var quantity = int.Parse(Console.ReadLine());
             drink.Category = category;
             drink.Name = name;
@@ -571,7 +571,7 @@ namespace Shop.View
                 var name = Console.ReadLine();
                 Console.Write("Enter price: ");
                 var price = decimal.Parse(Console.ReadLine());
-                Console.WriteLine("Enter quantity: ");
+                Console.Write("Enter quantity: ");
                 var quantity = int.Parse(Console.ReadLine());
                 drink.Category = category;
                 drink.Name = name;
