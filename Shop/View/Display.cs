@@ -7,7 +7,6 @@ namespace Shop.View
 {
     public class Display
     {
-        private const string close = "close";
         private const int CLOSE_OPERATION_ID = 5;
         private const int RETURN_OPERATION_ID = 6;
         private DrinkController drinkController;
@@ -137,7 +136,7 @@ namespace Shop.View
             }
             else
             {
-                Console.WriteLine("The pastry was not found!");
+                Console.WriteLine("The product was not found!");
             }
         }
 
@@ -157,16 +156,24 @@ namespace Shop.View
             pastry.Price = price;
             pastry.Quantity = quantity;
             pastryController.Add(pastry);
-            Console.WriteLine("The pastry was successfully added!");
+            Console.WriteLine("The product was successfully added!");
         }
+
 
         private void RemovePastry()
         {
             Console.Write("Enter ID: ");
             int id = int.Parse(Console.ReadLine());
             var pastry = pastryController.GetPastryById(id);
-            pastryController.Delete(pastry.Id); 
-            Console.WriteLine("Тhe pastry was deleted successfully!");
+            if (pastry != null)
+            {
+                pastryController.Delete(pastry.Id);
+                Console.WriteLine("Тhe product was deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
         }
 
         private void UpdatePastry()
@@ -190,7 +197,11 @@ namespace Shop.View
                 pastry.Price = price;
                 pastry.Quantity = quantity;
                 pastryController.Update(pastry);
-                Console.WriteLine("The pastry was updated successfully!");
+                Console.WriteLine("The product was updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found");
             }
         }
 
@@ -261,12 +272,12 @@ namespace Shop.View
                 Console.WriteLine("Category: " + fruitOrVegetable.Category);
                 Console.WriteLine("Name: " + fruitOrVegetable.Name);
                 Console.WriteLine("Price: " + fruitOrVegetable.Price + "lv.");
-                Console.WriteLine("Quantity: " + fruitOrVegetable.Quantity + "pcs.");
+                Console.WriteLine("Quantity: " + fruitOrVegetable.Quantity + "kg.");
                 Console.WriteLine(new string('*', 40));
             }
             else
             {
-                Console.WriteLine("The fruit or vegetable was not found!");
+                Console.WriteLine("The product was not found!");
             }
         }
 
@@ -286,7 +297,7 @@ namespace Shop.View
             fruitOrVegetable.Price = price;
             fruitOrVegetable.Quantity = quantity;
             fruitAndVegetableController.Add(fruitOrVegetable);
-            Console.WriteLine("The fruit or vegetable was successfully added!");
+            Console.WriteLine("The product was successfully added!");
         }
 
         private void RemoveFruitOrVegetable()
@@ -294,8 +305,15 @@ namespace Shop.View
             Console.Write("Enter ID: ");
             int id = int.Parse(Console.ReadLine());
             var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
-            fruitAndVegetableController.Delete(fruitOrVegetable.Id);
-            Console.WriteLine("Тhe fruit or vegetable was deleted successfully!");
+            if (fruitOrVegetable != null)
+            {
+                fruitAndVegetableController.Delete(fruitOrVegetable.Id);
+                Console.WriteLine("Тhe product was deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
         }
 
         private void UpdateFruitOrVegetable()
@@ -305,7 +323,7 @@ namespace Shop.View
             var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
             if (fruitOrVegetable != null)
             {
-                Console.WriteLine($"{fruitOrVegetable.Id} {fruitOrVegetable.Category} {fruitOrVegetable.Name} {fruitOrVegetable.Price}lv. {fruitOrVegetable.Quantity}pcs.");
+                Console.WriteLine($"{fruitOrVegetable.Id} {fruitOrVegetable.Category} {fruitOrVegetable.Name} {fruitOrVegetable.Price}lv. {fruitOrVegetable.Quantity}kg.");
                 Console.Write("Enter category: ");
                 var category = Console.ReadLine();
                 Console.Write("Enter name: ");
@@ -319,7 +337,11 @@ namespace Shop.View
                 fruitOrVegetable.Price = price;
                 fruitOrVegetable.Quantity = quantity;
                 fruitAndVegetableController.Update(fruitOrVegetable);
-                Console.WriteLine("The fruit or vegetable was updated successfully!");
+                Console.WriteLine("The product was updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found");
             }
         }
 
@@ -373,7 +395,7 @@ namespace Shop.View
             var nuts = nutController.GetAllNuts();
             foreach (var item in nuts)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -390,12 +412,12 @@ namespace Shop.View
                 Console.WriteLine("Category: " + nut.Category);
                 Console.WriteLine("Name: " + nut.Name);
                 Console.WriteLine("Price: " + nut.Price + "lv.");
-                Console.WriteLine("Quantity: " + nut.Quantity + "pcs.");
+                Console.WriteLine("Quantity: " + nut.Quantity + "kg.");
                 Console.WriteLine(new string('*', 40));
             }
             else
             {
-                Console.WriteLine("The nut was not found!");
+                Console.WriteLine("The product was not found!");
             }
         }
 
@@ -415,7 +437,7 @@ namespace Shop.View
             nut.Price = price;
             nut.Quantity = quantity;
             nutController.Add(nut);
-            Console.WriteLine("The nut was successfully added!");
+            Console.WriteLine("The product was successfully added!");
         }
 
         private void RemoveNut()
@@ -423,8 +445,16 @@ namespace Shop.View
             Console.Write("Enter ID: ");
             int id = int.Parse(Console.ReadLine());
             var nut = nutController.GetNutById(id);
-            nutController.Delete(nut.Id);
-            Console.WriteLine("Тhe nut was deleted successfully!");
+            if (nut!=null)
+            {
+                nutController.Delete(nut.Id);
+                Console.WriteLine("Тhe product was deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
+           
         }
 
         private void UpdateNut()
@@ -434,7 +464,7 @@ namespace Shop.View
             var nut = nutController.GetNutById(id);
             if (nut != null)
             {
-                Console.WriteLine($"{nut.Id} {nut.Category} {nut.Name} {nut.Price}lv. {nut.Quantity}pcs.");
+                Console.WriteLine($"{nut.Id} {nut.Category} {nut.Name} {nut.Price}lv. {nut.Quantity}kg.");
                 Console.Write("Enter category: ");
                 var category = Console.ReadLine();
                 Console.Write("Enter name: ");
@@ -448,7 +478,11 @@ namespace Shop.View
                 nut.Price = price;
                 nut.Quantity = quantity;
                 nutController.Update(nut);
-                Console.WriteLine("The nut was updated successfully!");
+                Console.WriteLine("The product was updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found");
             }
         }
 
@@ -525,7 +559,7 @@ namespace Shop.View
             }
             else
             {
-                Console.WriteLine("The drink was not found!");
+                Console.WriteLine("The product was not found!");
             }
         }
 
@@ -545,7 +579,7 @@ namespace Shop.View
             drink.Price = price;
             drink.Quantity = quantity;
             drinkController.Add(drink);
-            Console.WriteLine("The drink was successfully added!");
+            Console.WriteLine("The product was successfully added!");
         }
 
         private void RemoveDrink()
@@ -553,8 +587,16 @@ namespace Shop.View
             Console.Write("Enter ID: ");
             int id = int.Parse(Console.ReadLine());
             Drink drink = drinkController.GetDrinkById(id);
-            drinkController.Delete(drink.Id);
-            Console.WriteLine("Тhe drink was deleted successfully!");
+            if (drink!=null)
+            {
+                drinkController.Delete(drink.Id);
+                Console.WriteLine("Тhe product was deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
+            
         }
 
         private void UpdateDrink()
@@ -564,7 +606,7 @@ namespace Shop.View
             Drink drink = drinkController.GetDrinkById(id);
             if (drink!=null)
             {
-                Console.WriteLine($"{drink.Id} {drink.Category} {drink.Name} {drink.Price}lv. {drink.Quantity}pcs.");
+                Console.WriteLine($"ID: {drink.Id} Category: {drink.Category} Name: {drink.Name} Price: {drink.Price}lv. {drink.Quantity}pcs.");
                 Console.Write("Enter category: ");
                 var category = Console.ReadLine();
                 Console.Write("Enter name: ");
@@ -579,6 +621,10 @@ namespace Shop.View
                 drink.Quantity = quantity;
                 drinkController.Update(drink);
                 Console.WriteLine("The drink was updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
             }
         }
 
@@ -601,11 +647,11 @@ namespace Shop.View
             Console.WriteLine(new string('*', 40));
             Console.WriteLine(new string(' ', 7) + "FRUITS AND VEGETABLES MENU");
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine("1. List all fruts and vegetables.");
-            Console.WriteLine("2. Found fruit or vegetable by ID.");
-            Console.WriteLine("3. Add fruit or vegetable.");
-            Console.WriteLine("4. Remove fruit or vegetable.");
-            Console.WriteLine("5. Update fruit or vegetable.");
+            Console.WriteLine("1. List all fruts and vegetables");
+            Console.WriteLine("2. Found fruit or vegetable by ID");
+            Console.WriteLine("3. Add fruit or vegetable");
+            Console.WriteLine("4. Remove fruit or vegetable");
+            Console.WriteLine("5. Update fruit or vegetable");
             Console.WriteLine("6. Return to main menu");
             Console.WriteLine(new string('*', 40));
         }
@@ -615,11 +661,11 @@ namespace Shop.View
             Console.WriteLine(new string('*', 40));
             Console.WriteLine(new string(' ', 15) + "NUTS MENU");
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine("1. List all nuts.");
-            Console.WriteLine("2. Found nut by ID.");
-            Console.WriteLine("3. Add nut.");
-            Console.WriteLine("4. Remove nut.");
-            Console.WriteLine("5. Update nut.");
+            Console.WriteLine("1. List all nuts");
+            Console.WriteLine("2. Found nut by ID");
+            Console.WriteLine("3. Add nut");
+            Console.WriteLine("4. Remove nut");
+            Console.WriteLine("5. Update nut");
             Console.WriteLine("6. Return to main menu");
             Console.WriteLine(new string('*', 40));
         }
@@ -629,11 +675,11 @@ namespace Shop.View
                 Console.WriteLine(new string('*', 40));
                 Console.WriteLine(new string(' ', 15) + "DRINKS MENU");
                 Console.WriteLine(new string('*', 40));
-                Console.WriteLine("1. List all drinks.");
-                Console.WriteLine("2. Found drink by ID.");
-                Console.WriteLine("3. Add drink.");
-                Console.WriteLine("4. Remove drink.");
-                Console.WriteLine("5. Update drink.");
+                Console.WriteLine("1. List all drinks");
+                Console.WriteLine("2. Found drink by ID");
+                Console.WriteLine("3. Add drink");
+                Console.WriteLine("4. Remove drink");
+                Console.WriteLine("5. Update drink");
                 Console.WriteLine("6. Return to main menu");
                 Console.WriteLine(new string('*', 40));
         }
