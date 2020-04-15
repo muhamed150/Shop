@@ -5,10 +5,20 @@ using System.Linq;
 
 namespace Shop.Controllers
 {
-   public class NutController
+    /// <summary>
+    /// Provides the link between the database and the UI. 
+    /// </summary>
+    public class NutController
     {
+        /// <summary>
+        /// Database link.
+        /// </summary>
         private ShopContext context;
 
+        /// <summary>
+        /// Gives all Nuts in the database.
+        /// </summary>
+        /// <returns>all nuts from the database</returns>
         public List<Nut> GetAllNuts()
         {
             using (context = new ShopContext())
@@ -17,6 +27,11 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Gives a Nut with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted nut</param>
+        /// <returns>a nut with that id</returns>
         public Nut GetNutById(int id) 
         {
             using (context = new ShopContext())
@@ -25,6 +40,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a Nut.
+        /// </summary>
+        /// <param name="nut">the nut that will be added</param>
         public void Add(Nut nut)
         {
             using (context = new ShopContext())
@@ -34,6 +53,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates a Nut.
+        /// </summary>
+        /// <param name="nut">the nut that will be updated</param>
         public void Update(Nut nut)
         {
             using (context = new ShopContext())
@@ -47,6 +70,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a Nut with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted nut</param>
         public void Delete(int id)
         {
             using (context = new ShopContext())

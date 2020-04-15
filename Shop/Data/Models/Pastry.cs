@@ -1,5 +1,8 @@
 ﻿namespace Shop.Data.Models
 {
+    /// <summary>
+    /// The struckture of the Pastry table in the database. 
+    /// </summary>
     public class Pastry
     {
         public int Id { get; set; }

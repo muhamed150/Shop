@@ -1,5 +1,8 @@
 ﻿namespace Shop.Data.Models
 {
+    /// <summary>
+    /// The struckture of the Nut table in the database. 
+    /// </summary>
     public class Nut
     {
         public int Id { get; set; }

@@ -5,9 +5,20 @@ using System.Linq;
 
 namespace Shop.Controllers
 {
+    /// <summary>
+    /// Provides the link between the database and the UI. 
+    /// </summary>
     public class PastryController
     {
+        /// <summary>
+        /// Database link.
+        /// </summary>
         private ShopContext context;
+
+        /// <summary>
+        /// Gives all Pastries in the database.
+        /// </summary>
+        /// <returns>all pastries from the database</returns>
         public List<Pastry> GetAllPastries()
         {
             using (context = new ShopContext())
@@ -16,6 +27,11 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Gives a Pastry with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted pastry</param>
+        /// <returns>a pastry with that id</returns>
         public Pastry GetPastryById(int id)
         {
             using (context = new ShopContext())
@@ -24,6 +40,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a Pastry.
+        /// </summary>
+        /// <param name="pastry">the pastry that will be added</param>
         public void Add(Pastry pastry)
         {
             using (context = new ShopContext())
@@ -33,6 +53,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates a Pastry.
+        /// </summary>
+        /// <param name="pastry">the pastry that will be updated</param>
         public void Update(Pastry pastry)
         {
             using (context = new ShopContext())
@@ -46,6 +70,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a Pastry with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted pastry</param>
         public void Delete(int id)
         {
             using (context = new ShopContext())

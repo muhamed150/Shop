@@ -3,6 +3,9 @@ using Shop.Data.Models;
 
 namespace Shop.Data
 {
+    /// <summary>
+    /// Context to connect to the database.
+    /// </summary>
     public class ShopContext : DbContext
     {
         public ShopContext() : base()

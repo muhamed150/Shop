@@ -6,6 +6,9 @@ using Shop.Data.Models;
 
 namespace Shop.View
 {
+    /// <summary>
+    /// User interface.
+    /// </summary>
     public class Display
     {
         private const int CLOSE_OPERATION_ID = 5;
@@ -96,8 +99,6 @@ namespace Shop.View
                     case 5:
                         UpdatePastry();
                         Close();
-                        break;
-                    case 6:
                         break;
                     default:
                         break;
@@ -223,8 +224,6 @@ namespace Shop.View
                         UpdateFruitOrVegetable();
                         Close();
                         break;
-                    case 6:
-                        break;
                     default:
                         break;
                 }
@@ -348,8 +347,6 @@ namespace Shop.View
                     case 5:
                         UpdateNut();
                         Close();
-                        break;
-                    case 6:
                         break;
                     default:
                         break;
@@ -475,8 +472,6 @@ namespace Shop.View
                     case 5:
                         UpdateDrink(); 
                         Close();
-                        break;
-                    case 6: 
                         break;
                     default:
                         break;
