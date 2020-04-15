@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Shop.Controllers;
 using Shop.Data;
 using Shop.Data.Models;
@@ -114,7 +115,7 @@ namespace Shop.View
             var pastries = pastryController.GetAllPastries();
             foreach (var item in pastries)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -130,7 +131,7 @@ namespace Shop.View
                 Console.WriteLine("ID: " + pastry.Id);
                 Console.WriteLine("Category: " + pastry.Category);
                 Console.WriteLine("Name: " + pastry.Name);
-                Console.WriteLine("Price: " + pastry.Price + "lv.");
+                Console.WriteLine("Price: " + pastry.Price + "lv/pcs");
                 Console.WriteLine("Quantity: " + pastry.Quantity + "pcs.");
                 Console.WriteLine(new string('*', 40));
             }
@@ -143,22 +144,14 @@ namespace Shop.View
         private void AddPastry()
         {
             Pastry pastry = new Pastry();
-            Console.Write("Enter category: ");
-            var category = Console.ReadLine();
-            Console.Write("Enter name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter price: ");
-            var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter quantity: ");
-            var quantity = int.Parse(Console.ReadLine());
-            pastry.Category = category;
-            pastry.Name = name;
-            pastry.Price = price;
-            pastry.Quantity = quantity;
+            var elements = ReadElements();
+            pastry.Category = elements[0];
+            pastry.Name = elements[1];
+            pastry.Price = decimal.Parse(elements[2]);
+            pastry.Quantity = int.Parse(elements[3]);
             pastryController.Add(pastry);
             Console.WriteLine("The product was successfully added!");
         }
-
 
         private void RemovePastry()
         {
@@ -183,19 +176,12 @@ namespace Shop.View
             var pastry = pastryController.GetPastryById(id);
             if (pastry != null)
             {
-                Console.WriteLine($"{pastry.Id} {pastry.Category} {pastry.Name} {pastry.Price}lv. {pastry.Quantity}pcs.");
-                Console.Write("Enter category: ");
-                var category = Console.ReadLine();
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
-                Console.Write("Enter price: ");
-                var price = decimal.Parse(Console.ReadLine());
-                Console.Write("Enter quantity: ");
-                var quantity = int.Parse(Console.ReadLine());
-                pastry.Category = category;
-                pastry.Name = name;
-                pastry.Price = price;
-                pastry.Quantity = quantity;
+                Console.WriteLine($"{pastry.Id} {pastry.Category} {pastry.Name} {pastry.Price}lv/pcs {pastry.Quantity}pcs.");
+                var elements = ReadElements();
+                pastry.Category = elements[0];
+                pastry.Name = elements[1];
+                pastry.Price = decimal.Parse(elements[2]);
+                pastry.Quantity = int.Parse(elements[3]);
                 pastryController.Update(pastry);
                 Console.WriteLine("The product was updated successfully!");
             }
@@ -255,7 +241,7 @@ namespace Shop.View
             var fruitsAndVegetables = fruitAndVegetableController.GetAllFruitsAndVegetables();
             foreach (var item in fruitsAndVegetables)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}kg.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -271,7 +257,7 @@ namespace Shop.View
                 Console.WriteLine("ID: " + fruitOrVegetable.Id);
                 Console.WriteLine("Category: " + fruitOrVegetable.Category);
                 Console.WriteLine("Name: " + fruitOrVegetable.Name);
-                Console.WriteLine("Price: " + fruitOrVegetable.Price + "lv.");
+                Console.WriteLine("Price: " + fruitOrVegetable.Price + "lv/kg");
                 Console.WriteLine("Quantity: " + fruitOrVegetable.Quantity + "kg.");
                 Console.WriteLine(new string('*', 40));
             }
@@ -284,18 +270,11 @@ namespace Shop.View
         private void AddFruitOrVegetable()
         {
             FruitAndVegetable fruitOrVegetable = new FruitAndVegetable();
-            Console.Write("Enter category: ");
-            var category = Console.ReadLine();
-            Console.Write("Enter name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter price: ");
-            var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter quantity: ");
-            var quantity = int.Parse(Console.ReadLine());
-            fruitOrVegetable.Category = category;
-            fruitOrVegetable.Name = name;
-            fruitOrVegetable.Price = price;
-            fruitOrVegetable.Quantity = quantity;
+            var elements = ReadElements();
+            fruitOrVegetable.Category = elements[0];
+            fruitOrVegetable.Name = elements[1];
+            fruitOrVegetable.Price = decimal.Parse(elements[2]);
+            fruitOrVegetable.Quantity = int.Parse(elements[3]);
             fruitAndVegetableController.Add(fruitOrVegetable);
             Console.WriteLine("The product was successfully added!");
         }
@@ -323,19 +302,12 @@ namespace Shop.View
             var fruitOrVegetable = fruitAndVegetableController.GetFruitOrVegetableById(id);
             if (fruitOrVegetable != null)
             {
-                Console.WriteLine($"{fruitOrVegetable.Id} {fruitOrVegetable.Category} {fruitOrVegetable.Name} {fruitOrVegetable.Price}lv. {fruitOrVegetable.Quantity}kg.");
-                Console.Write("Enter category: ");
-                var category = Console.ReadLine();
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
-                Console.Write("Enter price: ");
-                var price = decimal.Parse(Console.ReadLine());
-                Console.Write("Enter quantity: ");
-                var quantity = int.Parse(Console.ReadLine());
-                fruitOrVegetable.Category = category;
-                fruitOrVegetable.Name = name;
-                fruitOrVegetable.Price = price;
-                fruitOrVegetable.Quantity = quantity;
+                Console.WriteLine($"{fruitOrVegetable.Id} {fruitOrVegetable.Category} {fruitOrVegetable.Name} {fruitOrVegetable.Price}lv/kg {fruitOrVegetable.Quantity}kg.");
+                var elements = ReadElements();
+                fruitOrVegetable.Category = elements[0];
+                fruitOrVegetable.Name = elements[1];
+                fruitOrVegetable.Price = decimal.Parse(elements[2]);
+                fruitOrVegetable.Quantity = int.Parse(elements[3]);
                 fruitAndVegetableController.Update(fruitOrVegetable);
                 Console.WriteLine("The product was updated successfully!");
             }
@@ -395,7 +367,7 @@ namespace Shop.View
             var nuts = nutController.GetAllNuts();
             foreach (var item in nuts)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}kg.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -411,7 +383,7 @@ namespace Shop.View
                 Console.WriteLine("ID: " + nut.Id);
                 Console.WriteLine("Category: " + nut.Category);
                 Console.WriteLine("Name: " + nut.Name);
-                Console.WriteLine("Price: " + nut.Price + "lv.");
+                Console.WriteLine("Price: " + nut.Price + "lv/kg");
                 Console.WriteLine("Quantity: " + nut.Quantity + "kg.");
                 Console.WriteLine(new string('*', 40));
             }
@@ -424,18 +396,11 @@ namespace Shop.View
         private void AddNut()
         {
             Nut nut = new Nut();
-            Console.Write("Enter category: ");
-            var category = Console.ReadLine();
-            Console.Write("Enter name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter price: ");
-            var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter quantity: ");
-            var quantity = int.Parse(Console.ReadLine());
-            nut.Category = category;
-            nut.Name = name;
-            nut.Price = price;
-            nut.Quantity = quantity;
+            var elements = ReadElements();
+            nut.Category = elements[0];
+            nut.Name = elements[1];
+            nut.Price = decimal.Parse(elements[2]);
+            nut.Quantity = int.Parse(elements[3]);
             nutController.Add(nut);
             Console.WriteLine("The product was successfully added!");
         }
@@ -464,19 +429,12 @@ namespace Shop.View
             var nut = nutController.GetNutById(id);
             if (nut != null)
             {
-                Console.WriteLine($"{nut.Id} {nut.Category} {nut.Name} {nut.Price}lv. {nut.Quantity}kg.");
-                Console.Write("Enter category: ");
-                var category = Console.ReadLine();
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
-                Console.Write("Enter price: ");
-                var price = decimal.Parse(Console.ReadLine());
-                Console.Write("Enter quantity: ");
-                var quantity = int.Parse(Console.ReadLine());
-                nut.Category = category;
-                nut.Name = name;
-                nut.Price = price;
-                nut.Quantity = quantity;
+                Console.WriteLine($"{nut.Id} {nut.Category} {nut.Name} {nut.Price}lv/kg {nut.Quantity}kg.");
+                var elements = ReadElements();
+                nut.Category = elements[0];
+                nut.Name = elements[1];
+                nut.Price = decimal.Parse(elements[2]);
+                nut.Quantity = int.Parse(elements[3]);
                 nutController.Update(nut);
                 Console.WriteLine("The product was updated successfully!");
             }
@@ -528,7 +486,6 @@ namespace Shop.View
 
         }
 
-
         private void ListAllDrinks()
         {
             Console.WriteLine(new string('*', 40));
@@ -537,7 +494,7 @@ namespace Shop.View
             var drinks = drinkController.GetAllDrinks();
             foreach (var item in drinks)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -553,7 +510,7 @@ namespace Shop.View
                 Console.WriteLine("ID: " + drink.Id);
                 Console.WriteLine("Category: " + drink.Category);
                 Console.WriteLine("Name: " + drink.Name);
-                Console.WriteLine("Price: " + drink.Price + "lv.");
+                Console.WriteLine("Price: " + drink.Price + "lv/pcs");
                 Console.WriteLine("Quantity: " + drink.Quantity + "pcs.");
                 Console.WriteLine(new string('*', 40));
             }
@@ -566,18 +523,11 @@ namespace Shop.View
         private void AddDrink()
         {
             Drink drink = new Drink();
-            Console.Write("Enter category: ");
-            var category = Console.ReadLine();
-            Console.Write("Enter name: ");
-            var name = Console.ReadLine();
-            Console.Write("Enter price: ");
-            var price = decimal.Parse(Console.ReadLine());
-            Console.Write("Enter quantity: ");
-            var quantity = int.Parse(Console.ReadLine());
-            drink.Category = category;
-            drink.Name = name;
-            drink.Price = price;
-            drink.Quantity = quantity;
+            var elements = ReadElements();
+            drink.Category = elements[0];
+            drink.Name = elements[1];
+            drink.Price = decimal.Parse(elements[2]);
+            drink.Quantity = int.Parse(elements[3]);
             drinkController.Add(drink);
             Console.WriteLine("The product was successfully added!");
         }
@@ -606,19 +556,12 @@ namespace Shop.View
             Drink drink = drinkController.GetDrinkById(id);
             if (drink!=null)
             {
-                Console.WriteLine($"ID: {drink.Id} Category: {drink.Category} Name: {drink.Name} Price: {drink.Price}lv. {drink.Quantity}pcs.");
-                Console.Write("Enter category: ");
-                var category = Console.ReadLine();
-                Console.Write("Enter name: ");
-                var name = Console.ReadLine();
-                Console.Write("Enter price: ");
-                var price = decimal.Parse(Console.ReadLine());
-                Console.Write("Enter quantity: ");
-                var quantity = int.Parse(Console.ReadLine());
-                drink.Category = category;
-                drink.Name = name;
-                drink.Price = price;
-                drink.Quantity = quantity;
+                Console.WriteLine($"ID: {drink.Id} Category: {drink.Category} Name: {drink.Name} Price: {drink.Price}lv/pcs {drink.Quantity}pcs.");
+                var elements = ReadElements();
+                drink.Category = elements[0];
+                drink.Name = elements[1];
+                drink.Price = decimal.Parse(elements[2]);
+                drink.Quantity = int.Parse(elements[3]);
                 drinkController.Update(drink);
                 Console.WriteLine("The drink was updated successfully!");
             }
@@ -689,6 +632,20 @@ namespace Shop.View
             Console.Write("Press any key to continue... ");
             Console.ReadKey();
             Console.Clear();
+        }
+
+        private List<string> ReadElements()
+        {
+            var list = new List<string>();
+            Console.Write("Enter category: ");
+            list.Add(Console.ReadLine());
+            Console.Write("Enter name: ");
+            list.Add(Console.ReadLine());
+            Console.Write("Enter price: ");
+            list.Add(Console.ReadLine());
+            Console.Write("Enter quantity: ");
+            list.Add(Console.ReadLine());
+            return list;
         }
     }
 }
