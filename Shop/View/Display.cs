@@ -110,7 +110,7 @@ namespace Shop.View
         private void ListAllPastries()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "PASTRIES");
+            Console.WriteLine(new string(' ', 16) + "PASTRIES");
             Console.WriteLine(new string('*', 40));
             var pastries = pastryController.GetAllPastries();
             foreach (var item in pastries)
@@ -200,7 +200,7 @@ namespace Shop.View
             var operation = -1;
             do
             {
-                ShowPastriesMenu();
+                ShowFruitsAndVegetablesMenu();
                 Console.Write("Enter number: ");
                 operation = int.Parse(Console.ReadLine());
                 Console.Clear();
@@ -239,12 +239,12 @@ namespace Shop.View
         private void ListAllFruitsAndVegetables()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "FRUITS AND VEGETABLES");
+            Console.WriteLine(new string(' ', 10) + "FRUITS AND VEGETABLES");
             Console.WriteLine(new string('*', 40));
             var fruitsAndVegetables = fruitAndVegetableController.GetAllFruitsAndVegetables();
             foreach (var item in fruitsAndVegetables)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}pcs.");
+                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv. {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -498,7 +498,7 @@ namespace Shop.View
         private void ListAllDrinks()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "DRINKS");
+            Console.WriteLine(new string(' ', 17) + "DRINKS");
             Console.WriteLine(new string('*', 40));
             var drinks = drinkController.GetAllDrinks();
             foreach (var item in drinks)
@@ -585,7 +585,7 @@ namespace Shop.View
         private void ShowPastriesMenu()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "PASTRIES MENU");
+            Console.WriteLine(new string(' ', 13) + "PASTRIES MENU");
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("1. List all pastries.");
             Console.WriteLine("2. Found pastry by ID.");
@@ -599,7 +599,7 @@ namespace Shop.View
         private void ShowFruitsAndVegetablesMenu()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "FRUITS AND VEGETABLES MENU");
+            Console.WriteLine(new string(' ', 7) + "FRUITS AND VEGETABLES MENU");
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("1. List all fruts and vegetables.");
             Console.WriteLine("2. Found fruit or vegetable by ID.");
@@ -613,7 +613,7 @@ namespace Shop.View
         private void ShowNutsMenu()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "NUTS MENU");
+            Console.WriteLine(new string(' ', 15) + "NUTS MENU");
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("1. List all nuts.");
             Console.WriteLine("2. Found nut by ID.");
