@@ -1,6 +1,4 @@
-﻿
-
-namespace Shop.Data.Models
+﻿namespace Shop.Data.Models
 {
     public class Drink
     {
