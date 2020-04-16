@@ -4,6 +4,83 @@
         <name>Shop</name>
     </assembly>
     <members>
+        <member name="T:Shop.Controllers.DrinkController">
+            <summary>
+            Providers the link between the database and UI.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.GetAllDrinks">
+            <summary>
+            Gives all Drinks in the database.
+            </summary>
+            <returns>all drinks from the database</returns>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.GetDrinkById(System.Int32)">
+            <summary>
+            Gives s drink with wanted id. 
+            </summary>
+            <param name="id">id of the wanted drink</param>
+            <returns>a drink with wanted id</returns>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.Add(Shop.Data.Models.Drink)">
+            <summary>
+            Adds a drink in database.
+            </summary>
+            <param name="drink">the drink that will be added</param>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.Update(Shop.Data.Models.Drink)">
+            <summary>
+            Updates a drink.
+            </summary>
+            <param name="drink">the drink that will be updated</param>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.Delete(System.Int32)">
+            <summary>
+            Deletes a dring with wanted id.
+            </summary>
+            <param name="id">id of the wanted drink</param>
+        </member>
+        <member name="T:Shop.Controllers.FruitAndVegetableController">
+            <summary>
+            Providers the link between the database and UI.
+            </summary>
+        </member>
+        <member name="F:Shop.Controllers.FruitAndVegetableController.context">
+            <summary>
+            Database link.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.GetAllFruitsAndVegetables">
+            <summary>
+            Gives all fruits and vegetables in the database.
+            </summary>
+            <returns>all fruits and vegetables from the database</returns>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.GetFruitOrVegetableById(System.Int32)">
+            <summary>
+            Gives a fruit or vegetable with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted fruit or vegetable</param>
+            <returns>a fruit or vegetable with that id</returns>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.Add(Shop.Data.Models.FruitAndVegetable)">
+            <summary>
+            Adds a fruit or vegetable.
+            </summary>
+            <param name="fruitORvegetable">the fruit or vegetable that will be added.</param>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.Update(Shop.Data.Models.FruitAndVegetable)">
+            <summary>
+            Updates a fruit or vegetable.
+            </summary>
+            <param name="fruitORvegetable">the fruit or vegetable that will be updated.</param>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.Delete(System.Int32)">
+            <summary>
+            Deletes a fruit or vegetable with the wanted Id.
+            </summary>
+            <param name="id">Id of the wanted fruit or vegetable.</param>
+        </member>
         <member name="T:Shop.Controllers.NutController">
             <summary>
             Provides the link between the database and the UI. 
@@ -86,14 +163,24 @@
             </summary>
             <param name="id">Id of the wanted pastry</param>
         </member>
+        <member name="T:Shop.Data.Models.Drink">
+            <summary>
+            The structure of drink table in database.
+            </summary>
+        </member>
+        <member name="T:Shop.Data.Models.FruitAndVegetable">
+            <summary>
+            The structure of fruits and vegetable table in database.
+            </summary>
+        </member>
         <member name="T:Shop.Data.Models.Nut">
             <summary>
-            The struckture of the Nut table in the database. 
+            The structure of the Nut table in the database. 
             </summary>
         </member>
         <member name="T:Shop.Data.Models.Pastry">
             <summary>
-            The struckture of the Pastry table in the database. 
+            The structure of the Pastry table in the database. 
             </summary>
         </member>
         <member name="T:Shop.Data.ShopContext">
@@ -104,6 +191,11 @@
         <member name="T:Shop.View.Display">
             <summary>
             User interface.
+            </summary>
+        </member>
+        <member name="M:Shop.View.Display.#ctor">
+            <summary>
+            Initialize controllers. 
             </summary>
         </member>
     </members>

@@ -115,7 +115,7 @@ namespace Shop.View
         private void ListAllPastries()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 16) + "PASTRIES");
+            Console.WriteLine(new string(' ', 16) + "PASTRY");
             Console.WriteLine(new string('*', 40));
             var pastries = pastryController.GetAllPastries();
             foreach (var item in pastries)
