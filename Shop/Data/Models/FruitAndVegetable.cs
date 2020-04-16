@@ -1,5 +1,8 @@
 ﻿namespace Shop.Data.Models
 {
+    /// <summary>
+    /// The structure of fruits and vegetable table in database.
+    /// </summary>
     public class FruitAndVegetable
     {
         public int Id { get; set; }

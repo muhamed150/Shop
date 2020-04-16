@@ -17,6 +17,10 @@ namespace Shop.View
         private NutController nutController;
         private FruitAndVegetableController fruitAndVegetableController;
         private PastryController pastryController;
+
+        /// <summary>
+        /// Initialize controllers. 
+        /// </summary>
         public Display()
         {
             drinkController = new DrinkController();
@@ -569,7 +573,7 @@ namespace Shop.View
         private void ShowPastriesMenu()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 13) + "PASTRIES MENU");
+            Console.WriteLine(new string(' ', 13) + "PASTRY MENU");
             Console.WriteLine(new string('*', 40));
             Console.WriteLine("1. List all pastries.");
             Console.WriteLine("2. Found pastry by ID.");

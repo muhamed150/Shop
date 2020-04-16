@@ -5,9 +5,20 @@ using System.Linq;
 
 namespace Shop.Controllers
 {
+    /// <summary>
+    /// Providers the link between the database and UI.
+    /// </summary>
     public class FruitAndVegetableController
     {
+        /// <summary>
+        /// Database link.
+        /// </summary>
         private ShopContext context;
+
+        /// <summary>
+        /// Gives all fruits and vegetables in the database.
+        /// </summary>
+        /// <returns>all fruits and vegetables from the database</returns>
         public List<FruitAndVegetable> GetAllFruitsAndVegetables()
         {
             using (context = new ShopContext())
@@ -16,6 +27,11 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Gives a fruit or vegetable with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted fruit or vegetable</param>
+        /// <returns>a fruit or vegetable with that id</returns>
         public FruitAndVegetable GetFruitOrVegetableById(int id)
         {
             using (context = new ShopContext())
@@ -24,6 +40,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds a fruit or vegetable.
+        /// </summary>
+        /// <param name="fruitORvegetable">the fruit or vegetable that will be added.</param>
         public void Add(FruitAndVegetable fruitORvegetable)
         {
             using (context = new ShopContext())
@@ -33,6 +53,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Updates a fruit or vegetable.
+        /// </summary>
+        /// <param name="fruitORvegetable">the fruit or vegetable that will be updated.</param>
         public void Update(FruitAndVegetable fruitORvegetable)
         {
             using (context = new ShopContext())
@@ -46,6 +70,10 @@ namespace Shop.Controllers
             }
         }
 
+        /// <summary>
+        /// Deletes a fruit or vegetable with the wanted Id.
+        /// </summary>
+        /// <param name="id">Id of the wanted fruit or vegetable.</param>
         public void Delete(int id)
         {
             using (context = new ShopContext())

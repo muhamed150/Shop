@@ -1,7 +1,7 @@
 ﻿namespace Shop.Data.Models
 {
     /// <summary>
-    /// The struckture of the Pastry table in the database. 
+    /// The structure of the Pastry table in the database. 
     /// </summary>
     public class Pastry
     {

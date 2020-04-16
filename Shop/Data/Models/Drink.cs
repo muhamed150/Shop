@@ -1,5 +1,8 @@
 ﻿namespace Shop.Data.Models
 {
+    /// <summary>
+    /// The structure of drink table in database.
+    /// </summary>
     public class Drink
     {
         public int Id { get; set; }
