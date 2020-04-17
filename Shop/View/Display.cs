@@ -23,7 +23,7 @@ namespace Shop.View
         /// </summary>
         public Display()
         {
-            drinkController = new DrinkController();
+            drinkController = new DrinkController(new ShopContext());
             nutController = new NutController();
             fruitAndVegetableController = new FruitAndVegetableController();
             pastryController = new PastryController();
@@ -157,12 +157,8 @@ namespace Shop.View
 
         private void AddPastry()
         {
-            Pastry pastry = new Pastry();
             var elements = ReadElements();
-            pastry.Category = elements[0];
-            pastry.Name = elements[1];
-            pastry.Price = decimal.Parse(elements[2]);
-            pastry.Quantity = int.Parse(elements[3]);
+            Pastry pastry = new Pastry(elements[0],elements[1],decimal.Parse(elements[2]),int.Parse(elements[3]));
             pastryController.Add(pastry);
             Console.WriteLine("The product was successfully added!");
         }
@@ -281,12 +277,8 @@ namespace Shop.View
 
         private void AddFruitOrVegetable()
         {
-            FruitAndVegetable fruitOrVegetable = new FruitAndVegetable();
             var elements = ReadElements();
-            fruitOrVegetable.Category = elements[0];
-            fruitOrVegetable.Name = elements[1];
-            fruitOrVegetable.Price = decimal.Parse(elements[2]);
-            fruitOrVegetable.Quantity = int.Parse(elements[3]);
+            FruitAndVegetable fruitOrVegetable = new FruitAndVegetable(elements[0], elements[1], decimal.Parse(elements[2]), int.Parse(elements[3]));
             fruitAndVegetableController.Add(fruitOrVegetable);
             Console.WriteLine("The product was successfully added!");
         }
@@ -405,12 +397,8 @@ namespace Shop.View
 
         private void AddNut()
         {
-            Nut nut = new Nut();
             var elements = ReadElements();
-            nut.Category = elements[0];
-            nut.Name = elements[1];
-            nut.Price = decimal.Parse(elements[2]);
-            nut.Quantity = int.Parse(elements[3]);
+            Nut nut = new Nut(elements[0], elements[1], decimal.Parse(elements[2]), int.Parse(elements[3]));
             nutController.Add(nut);
             Console.WriteLine("The product was successfully added!");
         }
@@ -530,12 +518,8 @@ namespace Shop.View
 
         private void AddDrink()
         {
-            Drink drink = new Drink();
             var elements = ReadElements();
-            drink.Category = elements[0];
-            drink.Name = elements[1];
-            drink.Price = decimal.Parse(elements[2]);
-            drink.Quantity = int.Parse(elements[3]);
+            Drink drink = new Drink(elements[0], elements[1], decimal.Parse(elements[2]), int.Parse(elements[3]));
             drinkController.Add(drink);
             Console.WriteLine("The product was successfully added!");
         }

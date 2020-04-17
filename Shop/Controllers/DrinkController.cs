@@ -12,6 +12,11 @@ namespace Shop.Controllers
     {
         private ShopContext context;
 
+        public DrinkController(ShopContext shopContext)
+        {
+            this.context = context;
+        }
+
         /// <summary>
         /// Gives all Drinks in the database.
         /// </summary>
