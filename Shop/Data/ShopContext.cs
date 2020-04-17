@@ -12,9 +12,10 @@ namespace Shop.Data
         {
 
         }
-        public DbSet<FruitAndVegetable> FruitsAndVegetables { get; set; }
-        public DbSet<Nut> Nuts { get; set; }
-        public DbSet<Pastry> Pastries { get; set; }
+
+        public virtual DbSet<FruitAndVegetable> FruitsAndVegetables { get; set; }
+        public virtual DbSet<Nut> Nuts { get; set; }
+        public virtual DbSet<Pastry> Pastries { get; set; }
         public virtual DbSet<Drink> Drinks { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

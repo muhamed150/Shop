@@ -14,7 +14,7 @@ namespace Shop.Controllers
 
         public DrinkController(ShopContext shopContext)
         {
-            this.context = context;
+            context = shopContext;
         }
 
         /// <summary>
@@ -23,7 +23,7 @@ namespace Shop.Controllers
         /// <returns>all drinks from the database</returns>
         public List<Drink> GetAllDrinks()
         {
-            using (context = new ShopContext())
+            using (context)
             {
                 return context.Drinks.ToList();
             }
@@ -36,9 +36,10 @@ namespace Shop.Controllers
         /// <returns>a drink with wanted id</returns>
         public Drink GetDrinkById(int id)
         {
-            using (context = new ShopContext())
+            using (context)
             {
-                return context.Drinks.Find(id);
+
+                return context.Drinks.FirstOrDefault(m => m.Id == id);
             }
         }
 
@@ -48,9 +49,9 @@ namespace Shop.Controllers
         /// <param name="drink">the drink that will be added</param>
         public void Add(Drink drink)
         {
-            using (context = new ShopContext())
+            using (context)
             {
-                context.Add(drink);
+                context.Drinks.Add(drink);
                 context.SaveChanges();
             }
         }
@@ -61,7 +62,7 @@ namespace Shop.Controllers
         /// <param name="drink">the drink that will be updated</param>
         public void Update(Drink drink)
         {
-            using (context = new ShopContext())
+            using (context)
             {
                 var item = context.Drinks.Find(drink.Id);
                 if (item != null)
@@ -77,7 +78,7 @@ namespace Shop.Controllers
         /// <param name="id">id of the wanted drink</param>
         public void Delete(int id)
         {
-            using (context = new ShopContext())
+            using (context)
             {
                 var item = context.Drinks.Find(id);
                 if (item != null)
