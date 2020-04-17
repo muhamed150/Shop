@@ -80,13 +80,13 @@ namespace Shop.Controllers
         {
             using (context)
             {
-                var item = context.Drinks.Find(id);
+                var item = context.Drinks.FirstOrDefault(m => m.Id == id);
                 if (item != null)
                 {
                     context.Drinks.Remove(item);
                     context.SaveChanges();
                 }
-
+                
             }
         }
     }

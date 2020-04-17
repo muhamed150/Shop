@@ -79,6 +79,32 @@ namespace Shop.Tests
             Assert.AreEqual(1, drink.Id);
         }
 
+        [TestCase]
+        public void RemoveDrink_Remove_A_Drink()
+        {
+            var data = new List<Drink>()
+            {
+                new Drink{Id=1, Name="Drink1"},
+                new Drink{Id=2, Name="Drink2" },
+                new Drink{Id=3, Name="Drink3"},
+            }.AsQueryable();
 
+            var mockSet = new Mock<DbSet<Drink>>();
+            mockSet.As<IQueryable<Drink>>().Setup(m => m.Provider).Returns(data.Provider);
+            mockSet.As<IQueryable<Drink>>().Setup(m => m.Expression).Returns(data.Expression);
+            mockSet.As<IQueryable<Drink>>().Setup(m => m.ElementType).Returns(data.ElementType);
+            mockSet.As<IQueryable<Drink>>().Setup(m => m.GetEnumerator()).Returns(data.GetEnumerator());
+
+            
+            var mockContext = new Mock<ShopContext>();
+            mockContext.Setup(x => x.Drinks).Returns(mockSet.Object);
+
+            var service = new DrinkController(mockContext.Object);
+            var drinks = service.GetAllDrinks();
+
+            int deletedDrinkId = 1; service.Delete(drinks[0].Id);
+
+            Assert.IsNull(service.GetAllDrinks().FirstOrDefault(x => x.Id == deletedDrinkId));
+        }
     }
 }

@@ -24,9 +24,9 @@ namespace Shop.View
         public Display()
         {
             drinkController = new DrinkController(new ShopContext());
-            nutController = new NutController();
-            fruitAndVegetableController = new FruitAndVegetableController();
-            pastryController = new PastryController();
+            nutController = new NutController(new ShopContext());
+            fruitAndVegetableController = new FruitAndVegetableController(new ShopContext());
+            pastryController = new PastryController(new ShopContext());
             HandleInput();
         }
 

@@ -14,7 +14,10 @@ namespace Shop.Controllers
         /// Database link.
         /// </summary>
         private ShopContext context;
-
+        public FruitAndVegetableController(ShopContext shopContext)
+        {
+            context = shopContext;
+        }
         /// <summary>
         /// Gives all fruits and vegetables in the database.
         /// </summary>
