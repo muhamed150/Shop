@@ -38,15 +38,15 @@ namespace Shop.View
             Console.WriteLine(" MAIN MENU ");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("1. Go to pastries");
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("2. Go to fruits and vegetables");
-            Console.BackgroundColor = ConsoleColor.DarkCyan;
-            Console.WriteLine("3. Go to nuts");
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine("3. Go to nuts");
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("4. Go to drinks");
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("5. Exit");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
@@ -124,12 +124,18 @@ namespace Shop.View
         private void ListAllPastries()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 16) + "PASTRY");
+            Console.Write(new string(' ', 16));
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(" PASTRY ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             var pastries = pastryController.GetAllPastries();
             foreach (var item in pastries)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
+                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.Write($"{item.Id}");
+                Console.ResetColor();
+                Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -244,12 +250,18 @@ namespace Shop.View
         private void ListAllFruitsAndVegetables()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 10) + "FRUITS AND VEGETABLES");
+            Console.Write(new string(' ', 10));
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.WriteLine(" FRUITS AND VEGETABLES ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             var fruitsAndVegetables = fruitAndVegetableController.GetAllFruitsAndVegetables();
             foreach (var item in fruitsAndVegetables)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
+                Console.BackgroundColor = ConsoleColor.DarkGreen;
+                Console.Write($"{item.Id}");
+                Console.ResetColor();
+                Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -364,12 +376,18 @@ namespace Shop.View
         private void ListAllNuts()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 18) + "NUTS");
+            Console.Write(new string(' ', 18));
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.WriteLine(" NUTS ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             var nuts = nutController.GetAllNuts();
             foreach (var item in nuts)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
+                Console.BackgroundColor = ConsoleColor.DarkMagenta;
+                Console.Write($"{item.Id}");
+                Console.ResetColor();
+                Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -485,12 +503,18 @@ namespace Shop.View
         private void ListAllDrinks()
         {
             Console.WriteLine(new string('*', 40));
-            Console.WriteLine(new string(' ', 17) + "DRINKS");
+            Console.Write(new string(' ', 18));
+            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.WriteLine(" DRINKS ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             var drinks = drinkController.GetAllDrinks();
             foreach (var item in drinks)
             {
-                Console.WriteLine($"{item.Id} {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.Write($"{item.Id}");
+                Console.ResetColor();
+                Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/pcs {item.Quantity}pcs.");
             }
             Console.WriteLine(new string('*', 40));
         }
@@ -567,19 +591,19 @@ namespace Shop.View
         {
             Console.WriteLine(new string('*', 40));
             Console.Write(new string(' ', 13));
-            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(" PASTRY MENU ");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("1. List all pastries");
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("2. Found pastry by ID");
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("3. Add pastry");
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("4. Remove pastry");
-            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("5. Update pastry");
             Console.BackgroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine("6. Return to main menu");
@@ -591,7 +615,7 @@ namespace Shop.View
         {
             Console.WriteLine(new string('*', 40));
             Console.Write(new string(' ', 6));
-            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine(" FRUITS AND VEGETABLES MENU ");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
@@ -599,13 +623,13 @@ namespace Shop.View
             Console.WriteLine("1. List all fruts and vegetables");
             Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("2. Found fruit or vegetable by ID");
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("3. Add fruit or vegetable");
-            Console.BackgroundColor = ConsoleColor.DarkMagenta;
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("4. Remove fruit or vegetable");
-            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("5. Update fruit or vegetable");
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkGreen;
             Console.WriteLine("6. Return to main menu");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
@@ -615,21 +639,21 @@ namespace Shop.View
         {
             Console.WriteLine(new string('*', 40));
             Console.Write(new string(' ', 16));
-            Console.BackgroundColor = ConsoleColor.DarkRed;
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine(" NUTS MENU ");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("1. List all nuts");
-            Console.BackgroundColor = ConsoleColor.DarkGreen;
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("2. Found nut by ID");
-            Console.BackgroundColor = ConsoleColor.Red;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("3. Add nut");
             Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("4. Remove nut");
-            Console.BackgroundColor = ConsoleColor.DarkCyan;
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("5. Update nut");
-            Console.BackgroundColor = ConsoleColor.DarkYellow;
+            Console.BackgroundColor = ConsoleColor.DarkMagenta;
             Console.WriteLine("6. Return to main menu");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
@@ -639,21 +663,21 @@ namespace Shop.View
         {
                 Console.WriteLine(new string('*', 40));
                 Console.Write(new string(' ', 15));
-                Console.BackgroundColor = ConsoleColor.DarkRed;
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine(" DRINKS MENU ");
                 Console.ResetColor();
                 Console.WriteLine(new string('*', 40));
                 Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine("1. List all drinks");
-                Console.BackgroundColor = ConsoleColor.DarkGreen;
-                Console.WriteLine("2. Found drink by ID");
-                Console.BackgroundColor = ConsoleColor.Red;
-                Console.WriteLine("3. Add drink");
-                Console.BackgroundColor = ConsoleColor.DarkMagenta;
-                Console.WriteLine("4. Remove drink");
                 Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("2. Found drink by ID");
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
+                Console.WriteLine("3. Add drink");
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
+                Console.WriteLine("4. Remove drink");
+                Console.BackgroundColor = ConsoleColor.DarkBlue;
                 Console.WriteLine("5. Update drink");
-                Console.BackgroundColor = ConsoleColor.DarkYellow;
+                Console.BackgroundColor = ConsoleColor.DarkCyan;
                 Console.WriteLine("6. Return to main menu");
                 Console.ResetColor();
                 Console.WriteLine(new string('*', 40));
