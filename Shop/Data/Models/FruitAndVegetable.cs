@@ -18,5 +18,9 @@
             Price = price;
             Quantity = quantity;
         }
+        public FruitAndVegetable()
+        {
+
+        }
     }
 }

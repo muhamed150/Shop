@@ -24,7 +24,7 @@ namespace Shop.Controllers
         /// <returns>all pastries from the database</returns>
         public List<Pastry> GetAllPastries()
         {
-            using (context = new ShopContext())
+            using (context)
             {
                 return context.Pastries.ToList();
             }
@@ -37,9 +37,9 @@ namespace Shop.Controllers
         /// <returns>a pastry with that id</returns>
         public Pastry GetPastryById(int id)
         {
-            using (context = new ShopContext())
+            using (context)
             {
-                return context.Pastries.Find(id);
+                return context.Pastries.FirstOrDefault(m => m.Id == id);
             }
         }
 
@@ -49,9 +49,9 @@ namespace Shop.Controllers
         /// <param name="pastry">the pastry that will be added</param>
         public void Add(Pastry pastry)
         {
-            using (context = new ShopContext())
+            using (context)
             {
-                context.Add(pastry);
+                context.Pastries.Add(pastry);
                 context.SaveChanges();
             }
         }
@@ -62,7 +62,7 @@ namespace Shop.Controllers
         /// <param name="pastry">the pastry that will be updated</param>
         public void Update(Pastry pastry)
         {
-            using (context = new ShopContext())
+            using (context)
             {
                 var item = context.Pastries.Find(pastry.Id);
                 if (item != null)
@@ -79,9 +79,9 @@ namespace Shop.Controllers
         /// <param name="id">Id of the wanted pastry</param>
         public void Delete(int id)
         {
-            using (context = new ShopContext())
+            using (context)
             {
-                var item = context.Pastries.Find(id);
+                var item = context.Pastries.FirstOrDefault(m => m.Id == id);
                 if (item != null)
                 {
                     context.Pastries.Remove(item);
