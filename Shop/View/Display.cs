@@ -11,12 +11,13 @@ namespace Shop.View
     /// </summary>
     public class Display
     {
-        private const int CLOSE_OPERATION_ID = 5;
+        private const int CLOSE_OPERATION_ID = 6;
         private const int RETURN_OPERATION_ID = 6;
         private DrinkController drinkController;
         private NutController nutController;
         private FruitAndVegetableController fruitAndVegetableController;
         private PastryController pastryController;
+        private AnimalProductController animalProductController;
 
         /// <summary>
         /// Initialize controllers. 
@@ -27,6 +28,7 @@ namespace Shop.View
             nutController = new NutController(new ShopContext());
             fruitAndVegetableController = new FruitAndVegetableController(new ShopContext());
             pastryController = new PastryController(new ShopContext());
+            animalProductController = new AnimalProductController(new ShopContext());
             HandleInput();
         }
 
@@ -47,7 +49,8 @@ namespace Shop.View
             Console.BackgroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("4. Go to drinks");
             Console.BackgroundColor = ConsoleColor.DarkBlue;
-            Console.WriteLine("5. Exit");
+            Console.WriteLine("5. Go to animal products");// we need to add color
+            Console.WriteLine("6. Exit");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
         }
@@ -74,11 +77,150 @@ namespace Shop.View
                     case 4:
                         DrinksInput();
                         break;
+                    case 5:
+                        AnimalProductsInput();
+                        break;
                     default:
                         break;
                 }
                 
             } while (operation != CLOSE_OPERATION_ID);
+        }
+
+        private void AnimalProductsInput()
+        {
+            Console.Clear();
+            var operation = -1;
+            do
+            {
+                ShowAnimalsProductsMenu();
+                Console.Write("Enter number: ");
+                operation = int.Parse(Console.ReadLine());
+                Console.Clear();
+                switch (operation)
+                {
+                    case 1:
+                        ListAllAnimalProducts();
+                        Close();
+                        break;
+                    case 2:
+                        FindAnimalProductById();
+                        Close();
+                        break;
+                    case 3:
+                        AddAnimalProduct();
+                        Close();
+                        break;
+                    case 4:
+                        RemoveAnimalProduct();
+                        Close();
+                        break;
+                    case 5:
+                        UpdateAnimalProduct();
+                        Close();
+                        break;
+                    default:
+                        break;
+                }
+
+            } while (operation != RETURN_OPERATION_ID);
+        }
+
+        private void UpdateAnimalProduct()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var animalProduct = animalProductController.GetAnimalProductById(id);
+            if (animalProduct != null)
+            {
+                Console.WriteLine($"{animalProduct.Id} {animalProduct.Category} {animalProduct.Name} {animalProduct.Price}lv/kg {animalProduct.Quantity}kg.");
+                var elements = ReadElements();
+                animalProduct.Category = elements[0];
+                animalProduct.Name = elements[1];
+                animalProduct.Price = decimal.Parse(elements[2]);
+                animalProduct.Quantity = int.Parse(elements[3]);
+                animalProductController.Update(animalProduct);
+                Console.WriteLine("The product was updated successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found");
+            }
+        }
+
+        private void RemoveAnimalProduct()
+        {
+            Console.Write("Enter ID: ");
+            int id = int.Parse(Console.ReadLine());
+            var animalProduct = animalProductController.GetAnimalProductById(id);
+            if (animalProduct != null)
+            {
+                animalProductController.Delete(animalProduct.Id);
+                Console.WriteLine("Тhe product was deleted successfully!");
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
+        }
+
+        private void AddAnimalProduct()
+        {
+            var elements = ReadElements();
+            AnimalProduct animalProduct = new AnimalProduct(elements[0], elements[1], decimal.Parse(elements[2]), int.Parse(elements[3]));
+            animalProductController.Add(animalProduct);
+            Console.WriteLine("The product was successfully added!");
+        }
+
+        private void FindAnimalProductById()
+        {
+            Console.Write("Enter ID: ");
+            var id = int.Parse(Console.ReadLine());
+            var animalProduct = animalProductController.GetAnimalProductById(id);
+            if (animalProduct != null)
+            {
+                Console.WriteLine(new string('*', 40));
+                Console.WriteLine("ID: " + animalProduct.Id);
+                Console.WriteLine("Category: " + animalProduct.Category);
+                Console.WriteLine("Name: " + animalProduct.Name);
+                Console.WriteLine("Price: " + animalProduct.Price + "lv/kg");
+                Console.WriteLine("Quantity: " + animalProduct.Quantity + "kg.");
+                Console.WriteLine(new string('*', 40));
+            }
+            else
+            {
+                Console.WriteLine("The product was not found!");
+            }
+        }
+
+        private void ListAllAnimalProducts()
+        {
+            Console.WriteLine(new string('*', 40));
+            Console.Write(new string(' ', 10));
+            Console.WriteLine(" ANIMAL PRODUCTS ");
+            Console.WriteLine(new string('*', 40));
+            var animalProducts = animalProductController.GetAllAnimalProducts();
+            foreach (var item in animalProducts)
+            {
+                Console.Write($"{item.Id}");
+                Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
+            }
+            Console.WriteLine(new string('*', 40));
+        }
+
+        private void ShowAnimalsProductsMenu()
+        {
+            Console.WriteLine(new string('*', 40));
+            Console.Write(new string(' ', 10));
+            Console.WriteLine(" ANIMAL PRODUCTS MENU ");
+            Console.WriteLine(new string('*', 40));
+            Console.WriteLine("1. List all animal products");
+            Console.WriteLine("2. Found animal product by ID");
+            Console.WriteLine("3. Add animal product");
+            Console.WriteLine("4. Remove animal product");
+            Console.WriteLine("5. Update animal product");
+            Console.WriteLine("6. Return to main menu");
+            Console.WriteLine(new string('*', 40));
         }
 
         private void PastriesInput()

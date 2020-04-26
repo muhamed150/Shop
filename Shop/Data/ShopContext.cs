@@ -17,6 +17,7 @@ namespace Shop.Data
         public virtual DbSet<Nut> Nuts { get; set; }
         public virtual DbSet<Pastry> Pastries { get; set; }
         public virtual DbSet<Drink> Drinks { get; set; }
+        public virtual DbSet<AnimalProduct> AnimalProducts { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

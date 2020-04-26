@@ -18,10 +18,5 @@
             Price = price;
             Quantity = quantity;
         }
-
-        public Drink()
-        {
-                
-        }
     }
 }
