@@ -19,5 +19,9 @@ namespace Shop.Data.Models
             Price = price;
             Quantity = quantity;
         }
+        public AnimalProduct()
+        {
+
+        }
     }
 }

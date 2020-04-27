@@ -12,9 +12,20 @@ namespace Shop.Controllers
     {
         private ShopContext context;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopContext"></param>
         public DrinkController(ShopContext shopContext)
         {
             context = shopContext;
+        }
+        /// <summary>
+        /// 
+        /// </summary>
+        public DrinkController()
+        {
+            context = new ShopContext();
         }
 
         /// <summary>
@@ -23,10 +34,7 @@ namespace Shop.Controllers
         /// <returns>all drinks from the database</returns>
         public List<Drink> GetAllDrinks()
         {
-            using (context = new ShopContext())
-            {
-                return context.Drinks.ToList();
-            }
+           return context.Drinks.ToList();       
         }
 
         /// <summary>
@@ -36,11 +44,7 @@ namespace Shop.Controllers
         /// <returns>a drink with wanted id</returns>
         public Drink GetDrinkById(int id)
         {
-            using (context = new ShopContext())
-            {
-
-                return context.Drinks.FirstOrDefault(m => m.Id == id);
-            }
+            return context.Drinks.FirstOrDefault(m => m.Id == id);
         }
 
         /// <summary>
@@ -49,11 +53,8 @@ namespace Shop.Controllers
         /// <param name="drink">the drink that will be added</param>
         public void Add(Drink drink)
         {
-            using (context = new ShopContext())
-            {
                 context.Drinks.Add(drink);
                 context.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -62,15 +63,12 @@ namespace Shop.Controllers
         /// <param name="drink">the drink that will be updated</param>
         public void Update(Drink drink)
         {
-            using (context = new ShopContext())
-            {
                 var item = context.Drinks.Find(drink.Id);
                 if (item != null)
                 {
                     context.Entry(item).CurrentValues.SetValues(drink);
                     context.SaveChanges();
                 }
-            }
         }
         /// <summary>
         /// Deletes a dring with wanted id.
@@ -78,16 +76,13 @@ namespace Shop.Controllers
         /// <param name="id">id of the wanted drink</param>
         public void Delete(int id)
         {
-            using (context = new ShopContext())
-            {
-                var item = context.Drinks.FirstOrDefault(m => m.Id == id);
-                if (item != null)
-                {
-                    context.Drinks.Remove(item);
-                    context.SaveChanges();
-                }
-
-            }
+           var item = context.Drinks.FirstOrDefault(m => m.Id == id);
+           if (item != null)
+           {
+               context.Drinks.Remove(item);
+               
+                context.SaveChanges();
+           }
         }
     }
 }

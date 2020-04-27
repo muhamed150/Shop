@@ -4,9 +4,67 @@
         <name>Shop</name>
     </assembly>
     <members>
+        <member name="T:Shop.Controllers.AnimalProductController">
+            <summary>
+            Providers the link between the database and UI.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.#ctor(Shop.Data.ShopContext)">
+            <summary>
+            
+            </summary>
+            <param name="shopContext"></param>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.GetAllAnimalProducts">
+            <summary>
+            Gives all animal products in the database.
+            </summary>
+            <returns>all animal products from the database</returns>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.GetAnimalProductById(System.Int32)">
+            <summary>
+            Gives an animal product with wanted id. 
+            </summary>
+            <param name="id">id of the wanted animal product</param>
+            <returns>a animal product with wanted id</returns>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.Add(Shop.Data.Models.AnimalProduct)">
+            <summary>
+            Adds an animal product in database.
+            </summary>
+            <param name="animalProduct">the animal product that will be added</param>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.Update(Shop.Data.Models.AnimalProduct)">
+            <summary>
+            Updates an animal product.
+            </summary>
+            <param name="animalProduct">the animal product that will be updated</param>
+        </member>
+        <member name="M:Shop.Controllers.AnimalProductController.Delete(System.Int32)">
+            <summary>
+            Deletes a animal product with wanted id.
+            </summary>
+            <param name="id">id of the wanted animal product</param>
+        </member>
         <member name="T:Shop.Controllers.DrinkController">
             <summary>
             Providers the link between the database and UI.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.#ctor(Shop.Data.ShopContext)">
+            <summary>
+            
+            </summary>
+            <param name="shopContext"></param>
+        </member>
+        <member name="M:Shop.Controllers.DrinkController.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:Shop.Controllers.DrinkController.GetAllDrinks">
@@ -50,6 +108,17 @@
             Database link.
             </summary>
         </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.#ctor(Shop.Data.ShopContext)">
+            <summary>
+            
+            </summary>
+            <param name="shopcontext"></param>
+        </member>
+        <member name="M:Shop.Controllers.FruitAndVegetableController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Shop.Controllers.FruitAndVegetableController.GetAllFruitsAndVegetables">
             <summary>
             Gives all fruits and vegetables in the database.
@@ -89,6 +158,17 @@
         <member name="F:Shop.Controllers.NutController.context">
             <summary>
             Database link.
+            </summary>
+        </member>
+        <member name="M:Shop.Controllers.NutController.#ctor(Shop.Data.ShopContext)">
+            <summary>
+            
+            </summary>
+            <param name="shopContext"></param>
+        </member>
+        <member name="M:Shop.Controllers.NutController.#ctor">
+            <summary>
+            
             </summary>
         </member>
         <member name="M:Shop.Controllers.NutController.GetAllNuts">
@@ -132,9 +212,20 @@
             Database link.
             </summary>
         </member>
+        <member name="M:Shop.Controllers.PastryController.#ctor(Shop.Data.ShopContext)">
+            <summary>
+            
+            </summary>
+            <param name="shopContext"></param>
+        </member>
+        <member name="M:Shop.Controllers.PastryController.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
         <member name="M:Shop.Controllers.PastryController.GetAllPastries">
             <summary>
-            Gives all Pastries in the database.
+            Gives all Pastry in the database.
             </summary>
             <returns>all pastries from the database</returns>
         </member>

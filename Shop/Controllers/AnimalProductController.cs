@@ -13,22 +13,28 @@ namespace Shop.Controllers
     public class AnimalProductController
     {
         private ShopContext context;
-
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="shopContext"></param>
         public AnimalProductController(ShopContext shopContext)
         {
             context = shopContext;
         }
-
+        /// <summary>
+        /// 
+        /// </summary>
+        public AnimalProductController()
+        {
+            context = new ShopContext();
+        }
         /// <summary>
         /// Gives all animal products in the database.
         /// </summary>
         /// <returns>all animal products from the database</returns>
         public List<AnimalProduct> GetAllAnimalProducts()
         {
-            using (context = new ShopContext())
-            {
-                return context.AnimalProducts.ToList();
-            }
+            return context.AnimalProducts.ToList();
         }
 
         /// <summary>
@@ -38,11 +44,7 @@ namespace Shop.Controllers
         /// <returns>a animal product with wanted id</returns>
         public AnimalProduct GetAnimalProductById(int id)
         {
-            using (context = new ShopContext())
-            {
-
-                return context.AnimalProducts.FirstOrDefault(m => m.Id == id);
-            }
+            return context.AnimalProducts.FirstOrDefault(m => m.Id == id);
         }
 
         /// <summary>
@@ -51,11 +53,8 @@ namespace Shop.Controllers
         /// <param name="animalProduct">the animal product that will be added</param>
         public void Add(AnimalProduct animalProduct)
         {
-            using (context = new ShopContext())
-            {
                 context.AnimalProducts.Add(animalProduct);
                 context.SaveChanges();
-            }
         }
 
         /// <summary>
@@ -64,15 +63,12 @@ namespace Shop.Controllers
         /// <param name="animalProduct">the animal product that will be updated</param>
         public void Update(AnimalProduct animalProduct)
         {
-            using (context = new ShopContext())
-            {
                 var item = context.AnimalProducts.Find(animalProduct.Id);
                 if (item != null)
                 {
                     context.Entry(item).CurrentValues.SetValues(animalProduct);
                     context.SaveChanges();
                 }
-            }
         }
         /// <summary>
         /// Deletes a animal product with wanted id.
@@ -80,16 +76,12 @@ namespace Shop.Controllers
         /// <param name="id">id of the wanted animal product</param>
         public void Delete(int id)
         {
-            using (context = new ShopContext())
-            {
                 var item = context.AnimalProducts.FirstOrDefault(m => m.Id == id);
                 if (item != null)
                 {
                     context.AnimalProducts.Remove(item);
                     context.SaveChanges();
                 }
-
-            }
         }
     }
 }
