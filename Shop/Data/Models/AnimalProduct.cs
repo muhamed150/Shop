@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Shop.Data.Models
+﻿namespace Shop.Data.Models
 {
+    /// <summary>
+    /// The structure of animal product table in database.
+    /// </summary>
     public class AnimalProduct
     {
         public int Id { get; set; }
