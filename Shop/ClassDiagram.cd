@@ -1,4 +1,91 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Shop.Data.Models.AnimalProduct">
+    <Position X="0.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Data\Models\AnimalProduct.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Data.Models.Drink">
+    <Position X="2.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Data\Models\Drink.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Data.Models.FruitAndVegetable">
+    <Position X="4.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Data\Models\FruitAndVegetable.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Data.Models.Nut">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Data\Models\Nut.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Data.Models.Pastry">
+    <Position X="8.75" Y="0.5" Width="1.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAQAAAAAAAAAAAAQAAAAAAAAAAAAAgAAACAA=</HashCode>
+      <FileName>Data\Models\Pastry.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Data.ShopContext">
+    <Position X="4.75" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AgAAAgAAAQgAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAA=</HashCode>
+      <FileName>Data\ShopContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Controllers.AnimalProductController">
+    <Position X="0.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAAAAAIAAAAAAAAAAAAAEAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>Controllers\AnimalProductController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Controllers.DrinkController">
+    <Position X="2.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAAAAAAAAAAAAAAAAAAAEAAAAAAEAAAAIAAAA=</HashCode>
+      <FileName>Controllers\DrinkController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Controllers.FruitAndVegetableController">
+    <Position X="4.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYSAAAAAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\FruitAndVegetableController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Controllers.NutController">
+    <Position X="6.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAAAAAAAAAAAAAACAAAAUAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Controllers\NutController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.Controllers.PastryController">
+    <Position X="8.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAYCAAAAAAAAAAAAAAAAAAAAAAEAAABAAAAAAAAABAA=</HashCode>
+      <FileName>Controllers\PastryController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Shop.View.Display">
+    <Position X="4.5" Y="12.75" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CgQAISjACSTgCGAEAAQAIAFAIAIYASAAECgjAICMBBA=</HashCode>
+      <FileName>View\Display.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

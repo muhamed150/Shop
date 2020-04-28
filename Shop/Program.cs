@@ -8,7 +8,7 @@ namespace Shop
         static void Main(string[] args)
         {
                 Display display = new Display();
-
+        
                 // Restore original colors  
                 Console.ResetColor();
         }
