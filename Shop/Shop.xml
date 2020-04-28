@@ -254,6 +254,11 @@
             </summary>
             <param name="id">Id of the wanted pastry</param>
         </member>
+        <member name="T:Shop.Data.Models.AnimalProduct">
+            <summary>
+            The structure of animal product table in database.
+            </summary>
+        </member>
         <member name="T:Shop.Data.Models.Drink">
             <summary>
             The structure of drink table in database.

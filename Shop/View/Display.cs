@@ -57,13 +57,6 @@ namespace Shop.View
             Console.WriteLine(new string('*', 40));
         }
 
-        public enum Colour
-        {
-            Blue = 0x00000001,
-            Green = 0x00000002,
-            Red = 0x00000004,
-            Intensity = 0x00000008
-        }
         private void HandleInput()
         {
             var operation = -1;
@@ -205,13 +198,17 @@ namespace Shop.View
         private void ListAllAnimalProducts()
         {
             Console.WriteLine(new string('*', 40));
-            Console.Write(new string(' ', 10));
-            Console.WriteLine(" ANIMAL PRODUCTS ");
+            Console.Write(new string(' ', 11));
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.WriteLine($" ANIMAL PRODUCTS ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
             var animalProducts = animalProductController.GetAllAnimalProducts();
             foreach (var item in animalProducts)
             {
+                Console.BackgroundColor = ConsoleColor.Red;
                 Console.Write($"{item.Id}");
+                Console.ResetColor();
                 Console.WriteLine($" {item.Category} {item.Name} {item.Price}lv/kg {item.Quantity}kg.");
             }
             Console.WriteLine(new string('*', 40));
@@ -221,15 +218,25 @@ namespace Shop.View
         {
             Console.WriteLine(new string('*', 40));
             Console.Write(new string(' ', 10));
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine(" ANIMAL PRODUCTS MENU ");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("1. List all animal products");
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine("2. Found animal product by ID");
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("3. Add animal product");
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine("4. Remove animal product");
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("5. Update animal product");
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine("6. Return to main menu");
+            Console.ResetColor();
             Console.WriteLine(new string('*', 40));
+      
         }
 
         private void PastriesInput()
