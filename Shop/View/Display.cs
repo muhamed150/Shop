@@ -4,6 +4,7 @@ using Shop.Controllers;
 using Shop.Data;
 using Shop.Data.Models;
 
+
 namespace Shop.View
 {
     /// <summary>
@@ -48,13 +49,21 @@ namespace Shop.View
             Console.WriteLine("3. Go to nuts");
             Console.BackgroundColor = ConsoleColor.DarkCyan;
             Console.WriteLine("4. Go to drinks");
-            Console.BackgroundColor = ConsoleColor.DarkBlue;
+            Console.BackgroundColor = ConsoleColor.Red;
             Console.WriteLine("5. Go to animal products");// we need to add color
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
             Console.WriteLine("6. Exit");
             Console.ResetColor();
             Console.WriteLine(new string('*', 40));
         }
 
+        public enum Colour
+        {
+            Blue = 0x00000001,
+            Green = 0x00000002,
+            Red = 0x00000004,
+            Intensity = 0x00000008
+        }
         private void HandleInput()
         {
             var operation = -1;
